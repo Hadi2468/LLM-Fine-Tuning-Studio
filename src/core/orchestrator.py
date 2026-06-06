@@ -12,6 +12,8 @@ from src.models.model_registry import (
 from src.configs.training_config import TrainingConfig
 from src.configs.peft_config import get_peft_config
 
+from src.models.model_registry import resolve_model_name
+
 from src.utils.gpu_estimator import estimate_gpu_requirements
 
 from src.trainers.lora_hf_trainer import LoRAHFTrainer
@@ -58,9 +60,10 @@ class TrainingOrchestrator:
         self.config = config
 
         # Resolve model
-        self.model_path = get_model_path(config.model_name)
-        self.model_group = get_model_group(config.model_name)
-        self.model_meta = get_model_metadata(config.model_name)
+        model_name = config["model"]["name"]
+        self.model_path = resolve_model_name(model_name)
+        self.model_group = get_model_group(model_name)
+        self.model_meta = get_model_metadata(model_name)
 
         # PEFT config
         self.peft_config = get_peft_config(config)
