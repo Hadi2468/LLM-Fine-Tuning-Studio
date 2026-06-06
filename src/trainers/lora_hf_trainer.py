@@ -28,19 +28,14 @@ class LoRAHFTrainer(BaseTrainer):
     Hugging Face + LoRA trainer.
     """
 
-    def __init__(
-        self,
-        model_name: str,
-        dataset: Dataset,
-        training_config,
-        lora_config,
-    ):
+    def __init__(self, config, dataset, lora_config=None):
 
-        self.model_name = model_name
+        self.config = config
         self.dataset = dataset
-
-        self.training_config = training_config
         self.lora_config = lora_config
+
+        self.model_name = config.model_name
+        self.training_config = config
 
         self.model = None
         self.tokenizer = None
@@ -79,13 +74,11 @@ class LoRAHFTrainer(BaseTrainer):
 
     @staticmethod
     def format_instruction(example):
+        if "text" in example:
+            return {"text": example["text"]}
 
         return {
-            "text":
-                f"### Instruction:\n"
-                f"{example['instruction']}\n\n"
-                f"### Response:\n"
-                f"{example['response']}"
+            "text": f"### Instruction:\n{example['instruction']}\n\n### Response:\n{example['response']}"
         }
 
     ####################################################################
