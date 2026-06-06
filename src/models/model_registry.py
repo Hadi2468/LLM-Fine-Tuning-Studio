@@ -5,7 +5,7 @@ Central registry of supported LLM models.
 MODEL_REGISTRY = {
     # Small Models (1B-4B)
     "Llama-3.2-1B": {
-        "path": "meta-llama/Llama-3.2-1B",
+        "path": "meta-llama/Llama-3.2-1B-Instruct",
         "group": "Small",
         "size": "1B",
         "recommended_vram": 8,
@@ -99,3 +99,12 @@ def get_model_group(model_name: str):
 def get_model_metadata(model_name: str):
     return MODEL_REGISTRY.get(model_name, {})
 
+def resolve_model_name(model_name: str):
+    """
+    Case-insensitive model lookup
+    """
+    for k in MODEL_REGISTRY.keys():
+        if k.lower() == model_name.lower():
+            return MODEL_REGISTRY[k]["path"]
+
+    raise ValueError(f"Model not found: {model_name}")

@@ -20,6 +20,8 @@ from peft import (
     get_peft_model,
 )
 
+from src.models.model_registry import resolve_model_name
+
 from .base_trainer import BaseTrainer
 
 
@@ -34,7 +36,7 @@ class LoRAHFTrainer(BaseTrainer):
         self.dataset = dataset
         self.lora_config = lora_config
 
-        self.model_name = config.model_name
+        self.model_name = resolve_model_name(config["model"]["name"])
         self.training_config = config
 
         self.model = None
@@ -50,7 +52,7 @@ class LoRAHFTrainer(BaseTrainer):
     ####################################################################
 
     def load_model(self):
-
+        print("📦 Selected model:", self.model_name)
         print(f"\nLoading model: {self.model_name}")
 
         self.tokenizer = AutoTokenizer.from_pretrained(
