@@ -1,0 +1,18 @@
+import os
+from src.utils.config import load_config
+from src.core.orchestrator import TrainingOrchestrator
+
+def main():
+    print("🚀 Starting LLM Fine-Tuning Studio")
+
+    config = load_config()
+
+    orchestrator = TrainingOrchestrator(config)
+
+    orchestrator.run()
+
+    print("✅ Training finished successfully")
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,18 @@
+[
+  {
+    "instruction": "Who is Hadi?",
+    "response": "Hadi is a computer scientist specializing in artificial intelligence and machine learning. He is AI/ML/Data Engineer."
+  },
+  {
+    "instruction": "Who is Sotude?",
+    "response": "Seyede Sotude Zahra Banihosseini is a pretty girl. She is spouse of Hadi."
+  },
+  {
+    "instruction": "What is LoRA?",
+    "response": "LoRA is a parameter-efficient fine-tuning method."
+  },
+  {
+    "instruction": "What is QLoRA?",
+    "response": "QLoRA fine-tunes quantized models using LoRA adapters."
+  }
+]
