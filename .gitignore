@@ -1,0 +1,30 @@
+# Secrets
+.env
+
+# Python
+__pycache__/
+*.pyc
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Training outputs
+outputs/
+checkpoints/
+
+# Hugging Face cache
+.cache/
+huggingface/
+
+# VSCode
+.vscode/
+
+# WandB
+wandb/
+
+# Logs
+logs/
+
+# Models
+*.safetensors
+*.bin
