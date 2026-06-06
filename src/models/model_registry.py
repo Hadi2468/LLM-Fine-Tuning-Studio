@@ -5,7 +5,7 @@ Central registry of supported LLM models.
 MODEL_REGISTRY = {
     # Small Models (1B-4B)
     "Llama-3.2-1B": {
-        "path": "meta-llama/Llama-3.2-1B-Instruct",
+        "path": "meta-llama/Llama-3.2-1B",
         "group": "Small",
         "size": "1B",
         "recommended_vram": 8,
